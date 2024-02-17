@@ -2,7 +2,7 @@ name: cron
 run-name: run every day
 on:
   schedule:
-    - cron: "0 15 * * *" # 午前 0 時 (UTC)
+    - cron: "3 17 * * *" # 午前 0 時 (UTC)
 jobs:
   scraping:
     runs-on: ubuntu-latest
