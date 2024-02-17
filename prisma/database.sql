@@ -1,0 +1,7 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "Wikipedia" (
+    "date" TEXT NOT NULL PRIMARY KEY,
+    "count" INTEGER NOT NULL
+);
+COMMIT;
