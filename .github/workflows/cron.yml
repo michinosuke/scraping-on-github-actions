@@ -3,6 +3,9 @@ run-name: cron
 env:
   INTERVAL_UNIT: hour # year, month, date, hour, minute, second
 on:
+  push:
+    branches:
+      - main
   schedule:
     - cron: "37 * * * *" # 毎時 (UTC)
 jobs:
