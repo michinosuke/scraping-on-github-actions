@@ -20,6 +20,7 @@ jobs:
           node-version: 18
       - run: sudo apt install -y sqlite3
       - run: npm i -g prisma ts-node
+      - run: npm i
       - run: ts-node src/index.ts
       - name: push diff
         env:
