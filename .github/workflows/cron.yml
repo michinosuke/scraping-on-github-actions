@@ -4,7 +4,7 @@ env:
   INTERVAL_UNIT: hour # year, month, date, hour, minute, second
 on:
   schedule:
-    - cron: "35 * * * *" # 毎時 (UTC)
+    - cron: "37 * * * *" # 毎時 (UTC)
 jobs:
   scraping:
     runs-on: ubuntu-latest
