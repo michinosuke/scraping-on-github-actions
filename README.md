@@ -1,5 +1,20 @@
 GitHub Actions & SQLite で定期的にスクレイピングする
 
+## カスタマイズ
+
+`.github/workflows/cron.yml` を編集して動作をカスタマイズできます。
+
+- `on.schedule.cron` : cron 式で実行間隔を設定できます。
+- `env.INTERVAL_UNIT` : 実行の間隔の単位を設定します。次の 6 項目から選択できます。
+  - year : 毎年
+  - month : 毎月
+  - date : 毎日
+  - hour : 毎時
+  - minute : 毎分
+  - second : 毎秒
+
+`INTERVAL_UNIT` は、その単位内で複数回プログラムが実行しても冪等であることを保証するものです。例えば、`INTERVAL_UNIT` を `date` に設定した場合、主キーは `2024-02-18` のようになり、1 日のうちに何回実行されてもデータが複数回登録されることはありません。
+
 ## ローカルの環境構築
 
 prisma と ts-node をグローバルにインストール
