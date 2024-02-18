@@ -73,12 +73,9 @@ const main = async () => {
   // データを保存する
   const result = await prisma.wikipedia.create({ data: { date, count } });
   console.log(`[保存完了] ${result.date} ${result.count}`);
-
   console.log(`sqlite3 ${sqlitePath} .dump > ${sqlFilePath}`);
   execSync(`sqlite3 ${sqlitePath} .dump > ${sqlFilePath}`);
   await zip(dateFileName);
-
-  await new Promise((resolve) => setTimeout(resolve, 10_000));
 };
 
 main();
