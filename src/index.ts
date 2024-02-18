@@ -33,6 +33,7 @@ const date = format(new Date(), formatStr);
 const dateFileName = date.replace(" ", "_").replace(/:/g, "-");
 const sqlitePath = join(__dirname, "../prisma/database.sqlite");
 const sqlFilePath = join(__dirname, `../database/${dateFileName}.sql`);
+const zipFilePath = join(__dirname, `../database/${dateFileName}.zip`);
 
 execSync(`rm -f ${sqlitePath}`);
 execSync("prisma db push");
@@ -55,7 +56,7 @@ function assertIntervalUnit(
 
 const main = async () => {
   // すでに取得済みだったら処理を終了する
-  if (existsSync(sqlFilePath)) {
+  if (existsSync(zipFilePath)) {
     console.log(`すでに取得済みなので処理を終了します。`);
     return;
   }
