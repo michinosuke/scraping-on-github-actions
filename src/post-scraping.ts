@@ -3,8 +3,8 @@ import { zip } from "./zip";
 import { join } from "path";
 import { variables } from "./variables";
 
-export const postScraping = async () => {
-  const { dateFileName, sqlitePath } = variables();
+export const postScraping = async (overrideDate?: string) => {
+  const { dateFileName, sqlitePath } = variables(overrideDate);
 
   const sqlFilePath = join(__dirname, `../database/${dateFileName}.sql`);
 
