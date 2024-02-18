@@ -1,6 +1,6 @@
 GitHub Actions & SQLite で定期的にスクレイピングする
 
-## カスタマイズ
+# カスタマイズ
 
 `.github/workflows/cron.yml` を編集して動作をカスタマイズできます。
 
@@ -14,52 +14,6 @@ GitHub Actions & SQLite で定期的にスクレイピングする
   - second : 毎秒
 
 `INTERVAL_UNIT` は、その単位内で複数回プログラムが実行しても冪等であることを保証するものです。例えば、`INTERVAL_UNIT` を `date` に設定した場合、主キーは `2024-02-18` のようになり、1 日のうちに何回実行されてもデータが複数回登録されることはありません。
-
-## ローカルの環境構築
-
-prisma と ts-node をグローバルにインストール
-
-```sh
-npm i -g prisma ts-node
-```
-
-package.json に記載されているライブラリをインストール
-
-```sh
-npm i
-```
-
-`prisma/schema.prisma` から型定義ファイルを生成
-
-```sh
-prisma generate
-```
-
-`prisma/schema.prisma` の内容を `prisma/database.sqlite` に適用
-
-```sh
-prisma db push
-```
-
-## SQL ファイルを出力する
-
-:warn: ローカルでデータベースを更新して push するときは必ず実行する
-
-```sh
-sqlite3 prisma/database.sqlite .dump > prisma/database.sql
-```
-
-## スクリプトを実行
-
-```sh
-ts-node src/index.ts
-```
-
-## SQL をデータベースに適用
-
-```sh
-sqlite3 prisma/database.sqlite < prisma/database.sql
-```
 
 ## データを見る
 
@@ -89,4 +43,42 @@ sqlite> SELECT * FROM Wikipedia;
 
 # 抜ける
 sqlite> .quit
+```
+
+---
+
+# 開発者向け
+
+## ローカルの環境構築
+
+prisma と ts-node をグローバルにインストール
+
+```sh
+npm i -g prisma ts-node
+```
+
+package.json に記載されているライブラリをインストール
+
+```sh
+npm i
+```
+
+## Prisma
+
+`prisma/schema.prisma` から型定義ファイルを生成
+
+```sh
+prisma generate
+```
+
+`prisma/schema.prisma` の内容を `prisma/database.sqlite` に適用
+
+```sh
+prisma db push
+```
+
+## スクリプトを実行
+
+```sh
+ts-node src/index.ts
 ```
