@@ -37,7 +37,7 @@ sqlite3 prisma/database.sqlite .dump > prisma/database.sql
 ## スクリプトを実行
 
 ```sh
-ts-node index.ts
+ts-node src/index.ts
 ```
 
 ## SQL をデータベースに適用
@@ -47,6 +47,20 @@ sqlite3 prisma/database.sqlite < prisma/database.sql
 ```
 
 ## データを見る
+
+まずは GitHub に保存されている最新データを取得する
+
+```sh
+git pull
+```
+
+データは zip ファイルに分散して保存されているので、解凍して SQLite に集める
+
+```sh
+ts-node src/extract.ts
+```
+
+SQLite の中に入って、SQL で分析できる
 
 ```sh
 # SQLite のバイナリを開く
