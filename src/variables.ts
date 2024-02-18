@@ -1,9 +1,12 @@
 import { format } from "date-fns";
 import { join } from "path";
 
-export const variables = () => {
-  const formatStr = getFormatStr();
-  const date = format(new Date(), formatStr);
+export const variables = (overrideDate?: string) => {
+  const date = (() => {
+    if (overrideDate) return overrideDate;
+    const formatStr = getFormatStr();
+    return format(new Date(), formatStr);
+  })();
   const dateFileName = date.replace(" ", "_").replace(/:/g, "-");
   const sqlitePath = join(__dirname, "../prisma/database.sqlite");
   const zipFilePath = join(__dirname, `../database/${dateFileName}.zip`);
