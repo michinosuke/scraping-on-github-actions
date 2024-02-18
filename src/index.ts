@@ -78,24 +78,7 @@ const main = async () => {
   execSync(`sqlite3 ${sqlitePath} .dump > ${sqlFilePath}`);
   await zip(dateFileName);
 
-  const zipFilePath = join(__dirname, `../database/${dateFileName}.zip`);
-
-  await new Promise((resolve, reject) => {
-    const intervalId = setInterval(() => {
-      console.log(existsSync(zipFilePath), zipFilePath);
-      if (existsSync(zipFilePath)) {
-        clearInterval(intervalId);
-        clearTimeout(timeoutId);
-        resolve({ zipFilePath });
-      }
-    }, 100);
-
-    const timeoutId = setTimeout(() => {
-      console.log("reject");
-      clearInterval(intervalId);
-      reject("zip timeout");
-    }, 10000);
-  });
+  await new Promise((resolve) => setTimeout(resolve, 10_000));
 };
 
 main();
