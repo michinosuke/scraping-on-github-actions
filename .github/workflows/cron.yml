@@ -1,5 +1,5 @@
 name: cron
-run-name: run every day
+run-name: cron
 env:
   INTERVAL_UNIT: hour # year, month, date, hour, minute, second
 on:
