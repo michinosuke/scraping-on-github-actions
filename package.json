@@ -9,11 +9,15 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.9.1",
+    "adm-zip": "^0.5.10",
+    "archiver": "^6.0.1",
     "axios": "^1.6.7",
     "date-fns": "^3.3.1",
     "jsdom": "^24.0.0"
   },
   "devDependencies": {
+    "@types/adm-zip": "^0.5.5",
+    "@types/archiver": "^6.0.2",
     "@types/jsdom": "^21.1.6",
     "prisma": "^5.9.1"
   }

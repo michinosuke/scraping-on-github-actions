@@ -3,3 +3,4 @@ node_modules
 
 # バイナリなので ignore
 /prisma/database.sqlite
+/database/*.sql

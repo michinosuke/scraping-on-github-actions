@@ -1,8 +1,10 @@
 name: cron
 run-name: run every day
+env:
+  INTERVAL_UNIT: hour # year, month, date, hour, minute, second
 on:
   schedule:
-    - cron: "0 15 * * *" # 午前 0 時 (UTC)
+    - cron: "35 * * * *" # 毎時 (UTC)
 jobs:
   scraping:
     runs-on: ubuntu-latest
@@ -14,12 +16,11 @@ jobs:
         with:
           node-version: 18
       - run: sudo apt install -y sqlite3
-      - run: sqlite3 prisma/database.sqlite < prisma/database.sql
+      #   - run: sqlite3 prisma/database.sqlite < prisma/database.sql
       - run: npm i -g prisma ts-node
       - run: npm i -D @types/jsdom
-      - run: prisma generate
-      - run: ts-node index.ts
-      - run: sqlite3 prisma/database.sqlite .dump > prisma/database.sql
+      - run: ts-node src/index.ts
+      #   - run: sqlite3 prisma/database.sqlite .dump > prisma/database.sql
       - name: push diff
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
