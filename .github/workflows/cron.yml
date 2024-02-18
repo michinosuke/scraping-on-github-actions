@@ -7,7 +7,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: "30 * * * *" # 毎時 (UTC)
+    - cron: "0 * * * *" # 毎時 (UTC)
 jobs:
   scraping:
     runs-on: ubuntu-latest
